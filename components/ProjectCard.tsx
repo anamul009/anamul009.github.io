@@ -17,8 +17,11 @@ export default function ProjectCard({ project, index = 0 }: Props) {
       aria-label={`${project.title} — ${project.category}`}
     >
       <div
-        className={`relative overflow-hidden rounded-3xl transition-transform duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:ring-4 group-focus-visible:ring-flame ${
-          tall ? "aspect-[4/5]" : "aspect-[4/3]"
+        // A fixed aspect ratio on a narrow screen cannot hold a long summary —
+        // it clipped the "View case study" link. On mobile the card grows with
+        // its text instead; the staggered ratios return once there is width.
+        className={`relative min-h-[20rem] overflow-hidden rounded-3xl transition-transform duration-500 ease-out group-hover:-translate-y-2 group-focus-visible:ring-4 group-focus-visible:ring-flame md:min-h-0 ${
+          tall ? "md:aspect-[4/5]" : "md:aspect-[4/3]"
         }`}
         style={{
           background: `linear-gradient(135deg, ${project.colorFrom}, ${project.colorTo})`,
@@ -47,7 +50,9 @@ export default function ProjectCard({ project, index = 0 }: Props) {
           </>
         )}
 
-        <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
+        {/* In normal flow so it can set the card's height on mobile; the
+            aspect ratio takes over from md up, where h-full fills it. */}
+        <div className="relative flex h-full flex-col justify-between gap-8 p-6 md:p-8">
           <div className="flex items-start justify-between gap-4">
             <span className="label rounded-full px-3 py-2" style={{ background: project.onColor, color: project.colorFrom }}>
               {project.category}

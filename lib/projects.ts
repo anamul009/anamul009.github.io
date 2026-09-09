@@ -26,8 +26,8 @@ export type Project = {
  * Published case studies. One real project beats four half-written ones, so
  * only finished entries live here.
  *
- * CERO and Promofy are parked in `projects.drafts.ts` until their dates and
- * outcomes are settled. That file is imported by nothing.
+ * Promofy is parked in `projects.drafts.ts` until its dates and outcomes are
+ * settled. That file is imported by nothing.
  *
  * Every number here traces to something in the project folder — page and
  * section counts are the actual files, the review areas are the headings of

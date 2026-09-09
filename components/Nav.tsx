@@ -41,10 +41,17 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? "bg-paper/85 backdrop-blur-md" : "bg-transparent"
+        open
+          ? "bg-paper"
+          : scrolled
+            ? "bg-paper/85 backdrop-blur-md"
+            : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10 md:py-6">
+      {/* The mobile sheet below is a child of this header, so its z-index is
+          scoped to the header's stacking context. This bar needs its own
+          higher layer or the sheet paints over the logo and Close button. */}
+      <div className="relative z-50 mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-10 md:py-6">
         <Link
           href="/"
           className="display text-xl leading-none md:text-2xl"
@@ -98,27 +105,61 @@ export default function Nav() {
       </div>
 
       {open && (
+        // Full-screen sheet. Sits below the header (z-40 vs z-50) so the logo
+        // and the Close button stay tappable over it. 100dvh rather than 100vh
+        // so mobile browser chrome cannot push the footer out of reach.
         <div
           id="mobile-nav"
-          className="border-t border-ink/10 bg-paper px-5 pb-10 pt-6 md:hidden"
+          className="fixed inset-0 z-40 flex h-[100dvh] flex-col overflow-y-auto bg-paper px-5 pb-10 pt-24 md:hidden"
         >
-          <nav className="flex flex-col gap-2" aria-label="Mobile">
-            {links.map((link) => (
+          <nav className="flex flex-col" aria-label="Mobile">
+            {links.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="display border-b border-ink/10 py-4 text-5xl hover:text-flame"
+                style={{ animationDelay: `${i * 60}ms` }}
+                className={`sheet-item display border-b border-ink/10 py-5 text-[clamp(2.75rem,14vw,4.5rem)] ${
+                  isActive(link.href) ? "text-flame" : ""
+                }`}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-          <a
-            href={`mailto:${site.email}`}
-            className="label mt-8 inline-block text-ink-soft"
+
+          <Link
+            href="/contact/"
+            style={{ animationDelay: `${links.length * 60}ms` }}
+            className="sheet-item label mt-10 rounded-full bg-ink px-6 py-5 text-center text-paper"
           >
-            {site.email}
-          </a>
+            Start a project
+          </Link>
+
+          {/* mt-auto pins this to the bottom of the screen. */}
+          <div
+            className="sheet-item mt-auto pt-12"
+            style={{ animationDelay: `${(links.length + 1) * 60}ms` }}
+          >
+            <p className="label text-ink-soft">Email</p>
+            <a href={`mailto:${site.email}`} className="mt-2 block text-lg">
+              {site.email}
+            </a>
+
+            <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+              {site.socials.map((s) => (
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="label text-ink-soft"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
     </header>

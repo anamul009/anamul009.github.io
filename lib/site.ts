@@ -10,7 +10,8 @@ export const site = {
   role: "Brand & Digital Designer / Front-End Developer",
   yearsExperience: 12,
   location: "Japan",
-  email: "hello@example.com", // TODO: swap for your domain address once it exists
+  // TODO: swap for an address on your own domain once you buy one.
+  email: "rahulanamul33@gmail.com",
   url: "https://anamul009.github.io",
 
   tagline: "Twelve years turning brands into things people can use.",

@@ -91,6 +91,16 @@ body {
   transform: none;
 }
 
+/* Items inside the full-screen mobile menu, staggered by an inline
+   animation-delay so the sheet assembles itself instead of snapping in. */
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.sheet-item {
+  animation: sheet-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Link underline that wipes in from the left. */
 .wipe {
   background-image: linear-gradient(currentColor, currentColor);

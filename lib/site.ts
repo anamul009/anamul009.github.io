@@ -3,9 +3,10 @@
  * Edit this file first — the pages read from it.
  */
 export const site = {
-  // TODO: put your full name here as you want clients to read it.
+  // `name` is the short logo mark in the nav; `fullName` is used in page
+  // titles, metadata and the footer copyright.
   name: "Anamul",
-  fullName: "Anamul",
+  fullName: "Kazi Anamul Haque",
   role: "Brand & Digital Designer / Front-End Developer",
   yearsExperience: 12,
   location: "Japan",

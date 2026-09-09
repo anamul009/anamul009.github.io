@@ -34,6 +34,14 @@ export const site = {
   /** Where the logo and identity back catalogue lives. */
   behance: "https://www.behance.net/anamul09",
 
+  /**
+   * Portrait for the About page. Put the file in /public and point at it,
+   * e.g. "/portrait.jpg". Empty string keeps the coloured placeholder.
+   * Portrait orientation suits the 4:5 frame; anything above ~1200px wide
+   * is wasted weight.
+   */
+  portrait: "",
+
   services: [
     {
       title: "Brand Identity",

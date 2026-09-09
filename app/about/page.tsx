@@ -62,15 +62,38 @@ export default function AboutPage() {
 
       <section className="px-5 pb-24 md:px-10 md:pb-32">
         <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-12">
-          {/* Portrait slot — drop a photo at /public/portrait.jpg to use it. */}
+          {/* Portrait. Set `portrait` in lib/site.ts to a file in /public and
+              the coloured placeholder is replaced automatically. */}
           <Reveal className="md:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-flame to-electric">
-              <span className="display absolute bottom-6 left-6 text-[clamp(3rem,8vw,6rem)] text-paper opacity-90">
-                {site.name}
-              </span>
-              <span className="label absolute right-6 top-6 rounded-full bg-paper px-3 py-2 text-ink">
-                Add your photo
-              </span>
+              {site.portrait ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={site.portrait}
+                  alt={`${site.fullName}, ${site.role}`}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              ) : (
+                /* No portrait yet. This reads as a designed brand panel
+                   rather than an empty slot waiting to be filled. */
+                <div className="absolute inset-0 flex flex-col justify-between p-7 text-paper md:p-9">
+                  <span
+                    className="display pointer-events-none absolute -bottom-[6%] -right-[4%] text-[13rem] leading-none opacity-15"
+                    aria-hidden="true"
+                  >
+                    {site.name.charAt(0)}
+                  </span>
+                  <p className="label relative">
+                    {site.origin} → {site.location}
+                  </p>
+                  <div className="relative">
+                    <p className="display text-[clamp(2.25rem,6vw,3.5rem)]">
+                      {site.fullName}
+                    </p>
+                    <p className="label mt-3 text-paper/80">{site.role}</p>
+                  </div>
+                </div>
+              )}
             </div>
           </Reveal>
 

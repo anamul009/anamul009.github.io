@@ -23,7 +23,7 @@ export default function Home() {
           <Reveal>
             <p className="label flex items-center gap-3 text-ink-soft">
               <span className="inline-block h-2 w-2 rounded-full bg-flame" />
-              {site.location} · {site.yearsExperience} years in practice
+              {site.origin} → {site.location} · {site.yearsExperience} years in practice
             </p>
           </Reveal>
 

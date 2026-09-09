@@ -93,9 +93,15 @@ export default function AboutPage() {
                   build. When one person crosses that gap, nothing gets dropped.
                 </p>
                 <p>
+                  I am from {site.origin} and live in {site.location}. Working across
+                  two design cultures sharpened the habit of asking what a mark actually
+                  communicates to the person in front of it, rather than what looks
+                  right to me.
+                </p>
+                <p>
                   Today I work with founders and teams who need brand and product to look
-                  like the same thought. Based in {site.location}, working with clients
-                  wherever they are.
+                  like the same thought — from {site.location}, with clients wherever
+                  they are.
                 </p>
               </div>
             </Reveal>

@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local editor/agent config
+/.claude/
+
+# Actions workflow is held back until the GitHub token has the "workflow"
+# scope. See README, section "Switching to automatic deploys".
+/.github/

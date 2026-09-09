@@ -28,6 +28,7 @@ export const site = {
   socials: [
     { label: "GitHub", href: "https://github.com/anamul009" },
     { label: "Behance", href: "https://www.behance.net/anamul09" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/anamul09" },
   ],
 
   /** Where the logo and identity back catalogue lives. */

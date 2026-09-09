@@ -29,24 +29,44 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="display mt-8 text-[clamp(3.2rem,13vw,13rem)]">
-              Brand
-              <span className="text-flame">.</span>
-              <br />
-              Interface
-              <span className="text-electric">.</span>
-              <br />
-              <span className="inline-flex flex-wrap items-baseline gap-x-5">
-                Code
-                <span className="text-acid">.</span>
-                <span
-                  className="hidden h-4 w-24 shrink-0 rounded-full bg-ink md:inline-block lg:w-48"
-                  aria-hidden="true"
-                />
+          {/* Not wrapped in Reveal — this is above the fold, so it plays on
+              load rather than waiting for a scroll. Delays are inline so the
+              stagger stays readable in one place. */}
+          <h1 className="display mt-8 text-[clamp(3.2rem,13vw,13rem)]">
+            <span className="hero-line">
+              <span className="hero-line-in" style={{ animationDelay: "0.05s" }}>
+                Brand
+                <span className="hero-dot text-flame" style={{ animationDelay: "0.75s" }}>
+                  .
+                </span>
               </span>
-            </h1>
-          </Reveal>
+            </span>
+
+            <span className="hero-line">
+              <span className="hero-line-in" style={{ animationDelay: "0.17s" }}>
+                Interface
+                <span className="hero-dot text-electric" style={{ animationDelay: "0.87s" }}>
+                  .
+                </span>
+              </span>
+            </span>
+
+            <span className="hero-line">
+              <span className="hero-line-in" style={{ animationDelay: "0.29s" }}>
+                <span className="inline-flex flex-wrap items-baseline gap-x-5">
+                  Code
+                  <span className="hero-dot text-acid" style={{ animationDelay: "0.99s" }}>
+                    .
+                  </span>
+                  <span
+                    className="hero-bar hidden h-4 w-24 shrink-0 rounded-full bg-ink md:inline-block lg:w-48"
+                    style={{ animationDelay: "1.15s" }}
+                    aria-hidden="true"
+                  />
+                </span>
+              </span>
+            </span>
+          </h1>
 
           <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12">
             <Reveal delay={160} className="md:col-span-7 lg:col-span-6">

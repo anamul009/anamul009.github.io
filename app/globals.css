@@ -91,6 +91,50 @@ body {
   transform: none;
 }
 
+/* ---------------------------------------------------------------
+   Hero headline entrance. Each line sits in its own overflow-hidden
+   band and rises out of it, so the type appears to be uncovered
+   rather than sliding across the page. The padding/negative-margin
+   pair stops the mask cropping descenders.
+   --------------------------------------------------------------- */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  /* The display face overflows its own line box at line-height 0.88, so the
+     band needs headroom or the mask shaves the glyph bottoms. The negative
+     margin cancels the padding, leaving the layout untouched. */
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+.hero-line-in {
+  display: block;
+  animation: line-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes line-rise {
+  from { transform: translateY(110%); }
+  to { transform: translateY(0); }
+}
+
+/* The punctuation is the only colour in the headline, so it lands
+   last and overshoots slightly instead of just fading in. */
+.hero-dot {
+  display: inline-block;
+  animation: dot-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes dot-pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.hero-bar {
+  transform-origin: left center;
+  animation: bar-grow 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* Items inside the full-screen mobile menu, staggered by an inline
    animation-delay so the sheet assembles itself instead of snapping in. */
 @keyframes sheet-in {

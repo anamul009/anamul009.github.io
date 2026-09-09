@@ -63,36 +63,27 @@ Until that is done the form shows a setup notice and cannot send.
 
 ## How it goes live
 
-Two commands. First save the source, then publish the built site:
+Push. That is the whole deploy.
 
 ```bash
 git add -A && git commit -m "Update work" && git push
 ```
 
-```bash
-npm run deploy
-```
+`.github/workflows/deploy.yml` picks it up, builds the site, and publishes it
+to GitHub Pages. Takes about two minutes. Watch it run on the repo's
+**Actions** tab.
 
-`npm run deploy` builds the site and pushes the result to the `gh-pages`
-branch, which is what GitHub Pages serves. Give it about a minute, then
-reload the site.
-
-### Switching to automatic deploys (optional, one time)
-
-There is a ready-made GitHub Actions workflow at
-`.github/workflows/deploy.yml` that would publish on every `git push`, so
-you would not need `npm run deploy` at all. GitHub refuses to accept
-workflow files unless your login has the `workflow` permission, which it
-currently does not.
-
-To enable it, run this once and follow the browser prompt:
+Remember to `cd` into this folder before running any `npm` or `git` command:
 
 ```bash
-gh auth refresh -s workflow
+cd "D:\MyDocument\デスクトップ\anamul009.github.io"
 ```
 
-Then remove the `/.github/` line from `.gitignore`, commit the workflow, and
-push. From that point every push deploys itself.
+### Manual fallback
+
+`npm run deploy` still exists and pushes a build to the `gh-pages` branch.
+It is not used any more — Pages now builds from Actions — so ignore it
+unless the workflow ever breaks.
 
 ---
 

@@ -23,12 +23,15 @@ export const site = {
   // Make a free form at formspree.io, then paste the id here.
   formspreeId: "YOUR_FORM_ID",
 
+  // Only real links belong here. A social icon pointing at "#" reads worse
+  // than no icon at all, so add each one as it becomes real.
   socials: [
     { label: "GitHub", href: "https://github.com/anamul009" },
-    { label: "Behance", href: "#" }, // TODO
-    { label: "LinkedIn", href: "#" }, // TODO
-    { label: "Instagram", href: "#" }, // TODO
+    { label: "Behance", href: "https://www.behance.net/anamul09" },
   ],
+
+  /** Where the logo and identity back catalogue lives. */
+  behance: "https://www.behance.net/anamul09",
 
   services: [
     {

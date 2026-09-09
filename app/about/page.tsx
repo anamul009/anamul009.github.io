@@ -83,9 +83,7 @@ export default function AboutPage() {
                   >
                     {site.name.charAt(0)}
                   </span>
-                  <p className="label relative">
-                    {site.origin} → {site.location}
-                  </p>
+                  <p className="label relative">{site.location}</p>
                   <div className="relative">
                     <p className="display text-[clamp(2.25rem,6vw,3.5rem)]">
                       {site.fullName}
@@ -116,15 +114,14 @@ export default function AboutPage() {
                   build. When one person crosses that gap, nothing gets dropped.
                 </p>
                 <p>
-                  I am from {site.origin} and live in {site.location}. Working across
-                  two design cultures sharpened the habit of asking what a mark actually
-                  communicates to the person in front of it, rather than what looks
-                  right to me.
+                  I work from {site.location} with clients in several countries, which
+                  keeps one question permanently in front of me: what does this mark
+                  actually communicate to the person looking at it, rather than what
+                  looks right to me.
                 </p>
                 <p>
                   Today I work with founders and teams who need brand and product to look
-                  like the same thought — from {site.location}, with clients wherever
-                  they are.
+                  like the same thought — wherever they happen to be.
                 </p>
               </div>
             </Reveal>

@@ -48,9 +48,7 @@ export default function Footer() {
           <div>
             <p className="label text-paper/50">Based in</p>
             <p className="mt-3 text-lg">{site.location}</p>
-            <p className="mt-1 text-paper/60">
-              From {site.origin} · working with clients worldwide
-            </p>
+            <p className="mt-1 text-paper/60">Working with clients worldwide</p>
           </div>
         </div>
 

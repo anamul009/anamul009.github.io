@@ -2,10 +2,12 @@ import Link from "next/link";
 import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
-import { featuredProjects } from "@/lib/projects";
+import { featuredProjects, projects } from "@/lib/projects";
 import { site } from "@/lib/site";
 
 export default function Home() {
+  const hasMoreWork = projects.length > featuredProjects.length;
+
   return (
     <>
       {/* ---------------------------------------------------------------
@@ -125,15 +127,28 @@ export default function Home() {
 
             {/* Tail card that pushes the visitor onward. */}
             <Reveal delay={featuredProjects.length * 90}>
+              {/* Pointing at /work only makes sense while there is more to
+                  see there than is already on this page. */}
               <Link
-                href="/work/"
+                href={hasMoreWork ? "/work/" : "/contact/"}
                 className="group flex aspect-[4/3] flex-col justify-between rounded-3xl border-2 border-dashed border-ink/25 p-6 transition-colors duration-300 hover:border-flame hover:bg-flame/5 md:p-8"
               >
-                <span className="label text-ink-soft">More</span>
+                <span className="label text-ink-soft">
+                  {hasMoreWork ? "More" : "Next"}
+                </span>
                 <span className="display text-[clamp(2rem,4vw,3.25rem)] group-hover:text-flame">
-                  See every
-                  <br />
-                  case study
+                  {hasMoreWork ? (
+                    <>
+                      See every
+                      <br />
+                      case study
+                    </>
+                  ) : (
+                    <>
+                      Start
+                      <br />a project
+                    </>
+                  )}
                   <span className="ml-3 inline-block transition-transform duration-300 group-hover:translate-x-2">
                     →
                   </span>

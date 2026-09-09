@@ -22,13 +22,13 @@ export type Project = {
  * Published case studies. One real project beats four half-written ones, so
  * only finished entries live here.
  *
- * Morizo, CERO and Promofy are parked in `projects.drafts.ts` until their
- * dates and outcomes are settled. That file is imported by nothing.
+ * CERO and Promofy are parked in `projects.drafts.ts` until their dates and
+ * outcomes are settled. That file is imported by nothing.
  *
- * Every number below traces to something in the project folder: the page
- * count is the files in client/src/pages, the eight review areas are the
- * headings of the client's own check list, the three device classes are the
- * ones that list names.
+ * Every number here traces to something in the project folder — page and
+ * section counts are the actual files, the review areas are the headings of
+ * the client's own check list, the brand and language counts are what the
+ * content data contains. Nothing is estimated.
  */
 export const projects: Project[] = [
   {
@@ -70,6 +70,48 @@ export const projects: Project[] = [
       {
         heading: "Why this is the interesting one",
         body: "Generated code is now a normal starting point, and it is genuinely fast. What it does not come with is judgement about the last ten percent — the security, performance and deployment work that separates something that renders from something publishable. Increasingly that gap is the job, and it needs someone who can read the code and design the thing. This project was a clean example of both.",
+      },
+    ],
+    featured: true,
+  },
+  {
+    slug: "morizo-group",
+    title: "Morizo",
+    client: "株式会社森蔵 / Morizo Co., Ltd.",
+    year: "2026",
+    category: "Web Design & Build",
+    summary:
+      "A holding company with three consumer brands across two unrelated industries, and a corporate site that made the group look like a filing error rather than a strategy. Rebuilt bilingual, from one content source.",
+    colorFrom: "#1d3a2f",
+    colorTo: "#b98b3c",
+    onColor: "#f4efe4",
+    services: [
+      "Web design",
+      "Bilingual content structure",
+      "Front-end build",
+      "Legacy migration",
+    ],
+    stats: [
+      { value: "3", label: "Brands under one group" },
+      { value: "2", label: "Languages, one content source" },
+      { value: "9", label: "Page sections built" },
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        body: "Morizo runs three consumer brands across two industries that have nothing obvious in common — food and beverage on one side, beauty on the other. Presented without care that reads as a company with no focus. Presented well it reads as range. Their existing site was hand-written static HTML, CSS and a script file, and it had stopped being able to carry the story or be updated by anyone but a developer.",
+      },
+      {
+        heading: "The structural decision",
+        body: "The company operates in Japanese and needs to be legible in English, so language could not be an afterthought bolted on at the end. I put every string in a single content file and drove both languages from it through one language context. That is the decision the whole build rests on: adding or correcting copy is one edit in one place, in both languages, with no risk of the versions drifting apart — which is exactly what happens when a translation lives in a duplicated set of pages.",
+      },
+      {
+        heading: "The build",
+        body: "Designed the pages first, then built them myself in React and Vite so what was approved is what shipped. Nine sections carry the company: the opening, philosophy, a message from the representative director, the business divisions, the group brands, company information, access and contact. Scroll reveals pace the page rather than decorate it, and the contact flow uses a modal with proper toast feedback instead of dumping the visitor on a bare thank-you page. The old static site was retired into a legacy folder rather than deleted, so nothing was lost in the move.",
+      },
+      {
+        heading: "Why it works",
+        body: "The site stops apologising for the shape of the business. Each brand gets its own room instead of being flattened into a list, the group frame explains why they sit together, and an English-speaking visitor gets the same argument as a Japanese one rather than a thinner translated version of it.",
       },
     ],
     featured: true,

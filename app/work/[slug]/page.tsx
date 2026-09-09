@@ -27,9 +27,20 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
   if (!project) notFound();
 
   const index = projects.findIndex((p) => p.slug === project.slug);
-  // With a single published project the "next" link would point at the page
-  // you are already on, so it is dropped until there are at least two.
-  const next = projects.length > 1 ? projects[(index + 1) % projects.length] : null;
+
+  // A case study for the same client group is a better onward link than
+  // whatever happens to sit next in the array, so it wins when one exists.
+  const relatedNext =
+    (project.related ?? [])
+      .map((slug) => getProject(slug))
+      .find((p): p is NonNullable<typeof p> => Boolean(p)) ?? null;
+
+  // With a single published project the fallback would point at the page you
+  // are already on, so it is dropped until there are at least two.
+  const cyclicNext = projects.length > 1 ? projects[(index + 1) % projects.length] : null;
+
+  const next = relatedNext ?? cyclicNext;
+  const isRelated = next !== null && next === relatedNext;
 
   return (
     <>
@@ -151,7 +162,14 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
       {/* Next project, or a way onward when this is the only one published */}
       <section className="border-t border-ink/15 px-5 py-16 md:px-10 md:py-24">
         <div className="mx-auto max-w-[1400px]">
-          <p className="label text-ink-soft">{next ? "Next project" : "Get in touch"}</p>
+          <p className="label text-flame">
+            {isRelated ? "Same client group" : next ? "Next project" : "Get in touch"}
+          </p>
+          {isRelated && project.relatedNote && (
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
+              {project.relatedNote}
+            </p>
+          )}
           <Link
             href={next ? `/work/${next.slug}/` : "/contact/"}
             className="display group mt-5 flex flex-wrap items-baseline gap-x-6 text-[clamp(2.5rem,9vw,7rem)] hover:text-flame"
